@@ -9,22 +9,18 @@ Controller is a class name
 ----------------------------------------------------------------------------------------------------------------------
 
 Command line runner :
-
 Main function is a static function so we cannot use any service, Repository etc in main as they are non-static
 CommandLineRunner helps us run the non static function in the main
 
 public class Demo implements CommandLineRunner{
-
     @Autowired
     AuthorRepository ar;
 
     public static void main(String[] args){
-
     }
 
     @Override
     public void run(String[] args) throws Exception{
-
     }
 }
 
@@ -33,7 +29,7 @@ public class Demo implements CommandLineRunner{
 Inversion Of Control:
 Instead of you managing the Lifecycle of the object yourself, spring will do it for you.
 
-@Component = The spring will create bean object of any classes which have component annotation directly or indirectly.
+@Component: The spring will create bean object of any classes which have component annotation directly or indirectly.
 Object created by spring automatically will be stored in the IOC Container
 Object created by us manually using new keyword will not be stored in the Container.
 
@@ -50,10 +46,8 @@ So Dependency Injection is Dependable to IOC.
 Circular Dependency:
 
 Code:
-
 Book Class:
 public class Book{
-
     private int id;
     private String name;
     private int cost
@@ -66,7 +60,6 @@ public class Book{
 
 Author Class:
 public class Author{
-
     private int id;
     private String name;
     private String email;
@@ -80,9 +73,6 @@ But to fetch the author it will go to the author table then it tries to fetch th
 it will go to the Book again making this a circular loop called circular dependency.
 
 To break that infinite loop we have many things:
-
     1: @JsonIgnore: We will put it on Author and It will ignore the author while collecting data.
     2: @JsonIgnore("bookList") : It will go to the author and collect all data except bookList.
-
-
 ----------------------------------------------------------------------------------------------------------------------
